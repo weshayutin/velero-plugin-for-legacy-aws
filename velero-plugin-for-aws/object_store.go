@@ -54,6 +54,8 @@ const (
 	insecureSkipTLSVerifyKey     = "insecureSkipTLSVerify"
 	caCertKey                    = "caCert"
 	enableSharedConfigKey        = "enableSharedConfig"
+	checksumAlgKey               = "checksumAlgorithm"
+
 )
 
 type s3Interface interface {
@@ -102,6 +104,7 @@ func (o *ObjectStore) Init(config map[string]string) error {
 		serverSideEncryptionKey,
 		insecureSkipTLSVerifyKey,
 		enableSharedConfigKey,
+		checksumAlgKey, // validate but don't use, for compatibility with config for 1.9+
 	); err != nil {
 		return err
 	}
